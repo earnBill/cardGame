@@ -1,10 +1,15 @@
 import { useState, useEffect } from 'react'
+import PokemonCard from './components/Card';
+import ScoreBars from './components/Score';
 
 const serverUrl = 'https://pokeapi.co/api/v2/pokemon?limit=10';
 
 function App() {
   const [count, setCount] = useState(0)
   const [pokemons, setPokemons] = useState([]);
+  const [checkArray, setCheckArray] = useState([]);
+  const [bestScore, setBestScore] = useState(0);
+  const [currentScore, setCurrentScore] = useState(0);
 
   useEffect(()=> {
     async function getPokemon() {
@@ -31,6 +36,38 @@ function App() {
     getPokemon();
   },[serverUrl]) 
 
+  return (
+    <>
+      <h1>Card Game</h1>
+      <ScoreBars
+        bestScore={bestScore}
+        currentScore={currentScore}
+      >
+      </ScoreBars>
+      <div className='container'>
+        {pokemons.map(pokemon => {
+          return (
+            <PokemonCard 
+              key={pokemon.id}
+              id={pokemon.id}
+              changeOrder={checkPokemon}
+            
+              source={pokemon.image}
+              name={pokemon.name}
+            >
+            </PokemonCard>
+        // <div key={pokemon.id}>
+        //   <img src={pokemon.image} alt="" />
+        //   <p>{pokemon.name}</p>
+        // </div>
+        )
+        })
+      }
+      </div>
+      
+    </>
+  )
+
   function randomOrder(array) {
     const shuffled = [...array];
     for (let i = shuffled.length - 1; i > 0; i--) {
@@ -40,28 +77,40 @@ function App() {
       let temp = shuffled[i];
       shuffled[i] = shuffled[j];
       shuffled[j] = temp;
-      console.log(shuffled[i]);
+      // console.log(shuffled[i]);
     }
-    console.log(shuffled);
+    // console.log(shuffled);
     setPokemons(shuffled);
   }
 
-  return (
-    <>
-      <h1>Card Game</h1>
-      {pokemons.map(pokemon => {
-        return (
-        <div key={pokemon.id}>
-          <img src={pokemon.image} alt="" />
-          <p>{pokemon.name}</p>
-        </div>
-        )
-        })
+  function checkPokemon(e) {
+    // console.log(e.target.dataset.id)
+    console.log(checkArray);
+    randomOrder(pokemons);
+    const pokemon = e.target.dataset.id;
+    console.log(pokemon);
+    
+    if (checkArray.includes(pokemon)) {
+      console.log('Wrong choice!!!!!')
+      setCheckArray([]);
+      setCurrentScore(0);
+      checkBestScore();
+    } else {
+      setCheckArray([...checkArray, pokemon]);
+      increaceScore();
+    }
+  }
+
+  function increaceScore() {
+    setCurrentScore(prev => prev + 1 )
+  }
+
+  function checkBestScore() {
+    if ( bestScore < currentScore ) {
+        setBestScore(currentScore);
       }
-      <button onClick={() => randomOrder(pokemons)}>Shuffle</button>
-      
-    </>
-  )
+  }
+
 }
 
 export default App

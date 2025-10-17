@@ -1,6 +1,8 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect } from 'react';
 import PokemonCard from './components/Card';
+import Header from './components/Header';
 import ScoreBars from './components/Score';
+
 
 const serverUrl = 'https://pokeapi.co/api/v2/pokemon?limit=10';
 
@@ -38,7 +40,7 @@ function App() {
 
   return (
     <>
-      <h1>Card Game</h1>
+      <Header/>
       <ScoreBars
         bestScore={bestScore}
         currentScore={currentScore}

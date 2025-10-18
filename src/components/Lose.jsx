@@ -1,5 +1,5 @@
 
-export default function LoseBox({score, highScore}) {
+export default function LoseBox({score, highScore, playAgain, backHome}) {
   return (
     <div className="layout">
       <div className="message">
@@ -9,8 +9,8 @@ export default function LoseBox({score, highScore}) {
           <p>High Score: <span>{highScore}</span> </p>
         </div>
         <div className="button-container">
-            <button>Play Again</button>
-            <button>Back to Home</button>
+            <button onClick={playAgain}>Play Again</button>
+            <button onClick={backHome}>Back to Home</button>
         </div>
       </div>
     </div>

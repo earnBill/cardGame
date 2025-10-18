@@ -70,6 +70,7 @@ function App() {
       setCheckArray([]);
       setCurrentScore(0);
       checkBestScore();
+      setLose(true);
     } else {
       setCheckArray([...checkArray, pokemon]);
       increaceScore();
@@ -101,6 +102,12 @@ function App() {
     setPokemonNum(20);
     setDisplayDifficulty(false);
   }
+  function playAgain() {
+    console.log('play again');
+  }
+  function backHome() {
+    console.log('back to home');
+  }
 
   return (
     <>
@@ -113,7 +120,8 @@ function App() {
         mediumImg={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/2.png`}
         hardImg={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/3.png`}
       />}
-      {!displayDifficulty && <ScoreBars
+      {!displayDifficulty && 
+      <ScoreBars
         bestScore={bestScore}
         currentScore={currentScore}
       />
@@ -139,7 +147,13 @@ function App() {
         })
       }
       </div>}
-      
+      {lose && 
+        <LoseBox
+          score={currentScore}
+          highScore={bestScore}
+          playAgain={playAgain}
+          backHome={backHome}
+        />}
     </>
   )
 

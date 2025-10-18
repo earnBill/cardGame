@@ -2,9 +2,9 @@ import { useState, useEffect } from 'react';
 import PokemonCard from './components/Card';
 import Header from './components/Header';
 import ScoreBars from './components/Score';
+import Difficulty from './components/Difficulty';
+import LoseBox from './components/Lose';
 
-
-const serverUrl = 'https://pokeapi.co/api/v2/pokemon?limit=10';
 
 function App() {
   const [count, setCount] = useState(0)
@@ -12,6 +12,11 @@ function App() {
   const [checkArray, setCheckArray] = useState([]);
   const [bestScore, setBestScore] = useState(0);
   const [currentScore, setCurrentScore] = useState(0);
+  const [pokemonNum, setPokemonNum] = useState(10);
+  const [displayDifficulty, setDisplayDifficulty] = useState(true);
+  const [lose, setLose] = useState(false)
+
+  const serverUrl = `https://pokeapi.co/api/v2/pokemon?limit=${pokemonNum}`;
 
   useEffect(()=> {
     async function getPokemon() {
@@ -37,38 +42,6 @@ function App() {
     }
     getPokemon();
   },[serverUrl]) 
-
-  return (
-    <>
-      <Header/>
-      <ScoreBars
-        bestScore={bestScore}
-        currentScore={currentScore}
-      >
-      </ScoreBars>
-      <div className='container'>
-        {pokemons.map(pokemon => {
-          return (
-            <PokemonCard 
-              key={pokemon.id}
-              id={pokemon.id}
-              changeOrder={checkPokemon}
-            
-              source={pokemon.image}
-              name={pokemon.name}
-            >
-            </PokemonCard>
-        // <div key={pokemon.id}>
-        //   <img src={pokemon.image} alt="" />
-        //   <p>{pokemon.name}</p>
-        // </div>
-        )
-        })
-      }
-      </div>
-      
-    </>
-  )
 
   function randomOrder(array) {
     const shuffled = [...array];
@@ -112,6 +85,63 @@ function App() {
         setBestScore(currentScore);
       }
   }
+
+  function playEasy() {
+    console.log('easy');
+    setPokemonNum(10);
+    setDisplayDifficulty(false);
+  }
+  function playMedium() {
+    console.log('medium');
+    setPokemonNum(15);
+    setDisplayDifficulty(false);
+  }
+  function playHard() {
+    console.log('hard');
+    setPokemonNum(20);
+    setDisplayDifficulty(false);
+  }
+
+  return (
+    <>
+      <Header/>
+      {displayDifficulty && <Difficulty
+        playEasy={playEasy}
+        playMedium={playMedium}
+        playHard={playHard}
+        easyImg={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/1.png`}
+        mediumImg={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/2.png`}
+        hardImg={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/3.png`}
+      />}
+      {!displayDifficulty && <ScoreBars
+        bestScore={bestScore}
+        currentScore={currentScore}
+      />
+      }
+      
+      {!displayDifficulty && <div className='container'>
+        {pokemons.map(pokemon => {
+          return (
+            <PokemonCard 
+              key={pokemon.id}
+              id={pokemon.id}
+              changeOrder={checkPokemon}
+            
+              source={pokemon.image}
+              name={pokemon.name}
+            >
+            </PokemonCard>
+        // <div key={pokemon.id}>
+        //   <img src={pokemon.image} alt="" />
+        //   <p>{pokemon.name}</p>
+        // </div>
+        )
+        })
+      }
+      </div>}
+      
+    </>
+  )
 
 }
 

@@ -1,8 +1,9 @@
 export default function ScoreBars({bestScore, currentScore}) {
   return (
-    <>
-      <h2>Best Score :  {bestScore} </h2>
-      <h2>Current Score:  {currentScore} </h2>
-    </>
+    <div className="score-board">
+      <h2>Current Score:  <span>{currentScore}</span> </h2>
+      <h2>Best Score :  <span>{bestScore}</span> </h2>
+      
+    </div>
   )
 }

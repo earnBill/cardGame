@@ -84,6 +84,7 @@ function App() {
     console.log("score:" + score)
     setCurrentScore(score);
     if (score===pokemonNum) {
+      setBestScore(score);
       setWin(true);
     } 
   }

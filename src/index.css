@@ -140,7 +140,7 @@ body {
   margin: auto;
 }
 
-.layout {
+.layout, .win-container {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -161,15 +161,35 @@ body {
   padding: 10px;
 }
 
+.message h1 {
+  color: #ffb900;
+}
+
+.message-container {
+  display: flex;
+  justify-content: center;
+}
+
+.message-container p {
+  color: #a1a1a1;
+  margin:  7px;
+}
+
 .button-container {
   display: flex;
   justify-content: center;
 }
 
 .button-container button {
-  padding: 7px;
+  padding: 5px 20px;
   margin: 5px;
-  border-radius: 5px;
+  border-radius: 10px;
+  
+}
+
+.button-container button:hover {
+  background-color: #ffb900;
+  border: 1px solid white;
 }
 
 h1, h2  {

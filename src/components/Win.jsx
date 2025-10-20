@@ -1,9 +1,9 @@
 
-export default function LoseBox({ score, highScore, playAgain, backHome}) {
+export default function WinBox( { score, highScore, playAgain, backHome} ){
   return (
-    <div className="layout">
+    <div className="win-container">
       <div className="message">
-        <h1>Game Over</h1>
+        <h1>You Win</h1>
         <div className="message-container">
           <p>Score: <span>{score}</span></p>
           <p>High Score: <span>{highScore}</span> </p>

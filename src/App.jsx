@@ -130,6 +130,7 @@ function App() {
     console.log('back to home');
     setLose(false);
     setWin(false);
+    setBestScore(0);
     resetGame();
     setDisplayDifficulty(true);
   }

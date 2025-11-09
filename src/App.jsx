@@ -18,7 +18,7 @@ function App() {
   const [lose, setLose] = useState(false);
   const [win, setWin] = useState(false);
 
-  const serverUrl = `https://pokeapi.co/api/v2/pokemon?limit=${pokemonNum}`;
+  const serverUrl = `https://pokeapi.co/api/v2/pokemon?limit=100`;
 
   useEffect(()=> {
     async function getPokemon() {
@@ -30,12 +30,7 @@ function App() {
         // let pokemonImage = await newResponse.json();
         // console.log(pokemonImage.sprites.front_default);
         // let imageUrl = pokemonImage.sprites.front_default;
-        const urlList = pokemonList.results.map(pokemon => {
-          const id = pokemon.url.split('/').filter(Boolean).pop();
-          console.log(id);
-          const image = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${id}.png`;
-          return {id, name: pokemon.name, image}
-        })
+        const urlList = pickPokemons(pokemonList, pokemonNum);
         setPokemons(urlList)
         console.log(urlList);
       } catch(err) {
@@ -43,7 +38,21 @@ function App() {
       }
     }
     getPokemon();
-  },[serverUrl]) 
+  },[serverUrl, pokemonNum]) 
+
+  function pickPokemons(array, count) {
+    let randomNum = Math.floor(Math.random() * 80);
+    console.log(`randomNum = ${randomNum}, pokemonNum = ${count}`);
+    const newPokemonList = array.results.slice(randomNum, randomNum + count);
+    console.log(newPokemonList);
+    const urlList = newPokemonList.map(pokemon => {
+      const id = pokemon.url.split('/').filter(Boolean).pop();
+      console.log(id);
+      const image = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${id}.png`;
+      return {id, name: pokemon.name, image}
+    });
+    return urlList;
+  }
 
   function randomOrder(array) {
     const shuffled = [...array];

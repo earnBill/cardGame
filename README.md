@@ -1,17 +1,57 @@
-Pokemon card game https://cardgame-pokemon.vercel.app/
-# React + Vite
+# cardGame
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+**A simple card-game built with React + Vite**  
+This project demonstrates the basics of creating a browser-based card game: deck handling, shuffling, game flow, and simple UI interactions.
+https://cardgame-pokemon.vercel.app/
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 📄 Table of Contents
 
-## React Compiler
+- [About the Project](#about-the-project)  
+- [Technologies / Dependencies](#technologies--dependencies)  
+- [File Structure](#file-structure)  
+- [Installation & Setup](#installation--setup)  
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+---
 
-## Expanding the ESLint configuration
+## About the Project
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+**cardGame** is a lightweight card-game implemented using React and Vite.  
+It serves as a simple example of how to build a deck system, shuffle functionality, and basic game logic inside a web application.
+
+---
+
+## Technologies / Dependencies
+
+- JavaScript (ES6+)  
+- React  
+- Vite  
+- HTML / CSS
+- 
+---
+
+## File Structure
+
+/
+├── src/ # Core application code
+│ ├── components/ # Reusable UI components (if applicable)
+│ └── main.jsx # App entry point
+│
+├── index.html # Main HTML file
+├── package.json # Dependencies & scripts
+├── package-lock.json
+├── vite.config.js
+├── .gitignore
+├── eslint.config.js # ESLint configuration (optional)
+└── README.md # Project documentation (this file)
+
+---
+
+## Installation & Setup
+
+```bash
+git clone https://github.com/earnBill/cardGame.git
+cd cardGame
+npm install         
+npm run dev         # start the development server

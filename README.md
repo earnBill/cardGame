@@ -34,8 +34,9 @@ It serves as a simple example of how to build a deck system, shuffle functionali
 ## File Structure
 
 /
+├── public/ # Static assets (images, icons, etc.)
 ├── src/ # Core application code
-│ ├── components/ # Reusable UI components (if applicable)
+│ ├── components/ # Reusable UI components
 │ └── main.jsx # App entry point
 │
 ├── index.html # Main HTML file
@@ -43,8 +44,8 @@ It serves as a simple example of how to build a deck system, shuffle functionali
 ├── package-lock.json
 ├── vite.config.js
 ├── .gitignore
-├── eslint.config.js # ESLint configuration (optional)
-└── README.md # Project documentation (this file)
+├── eslint.config.js # ESLint configuration
+└── README.md # Project documentation
 
 ---
 

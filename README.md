@@ -34,9 +34,14 @@ It serves as a simple example of how to build a deck system, shuffle functionali
 ## File Structure
 
 /
+## File Structure
+```bash
 ├── public/ # Static assets (images, icons, etc.)
 ├── src/ # Core application code
 │ ├── components/ # Reusable UI components
+│ ├── assets/ # Images or media (optional)
+│ ├── styles/ # CSS or styling files (optional)
+│ ├── utils/ # Helper utilities (optional)
 │ └── main.jsx # App entry point
 │
 ├── index.html # Main HTML file
@@ -44,14 +49,13 @@ It serves as a simple example of how to build a deck system, shuffle functionali
 ├── package-lock.json
 ├── vite.config.js
 ├── .gitignore
-├── eslint.config.js # ESLint configuration
+├── eslint.config.js # Linting configuration
 └── README.md # Project documentation
-
+```
 ---
 
 ## Installation & Setup
 
-```bash
 git clone https://github.com/earnBill/cardGame.git
 cd cardGame
 npm install         

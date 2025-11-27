@@ -31,9 +31,6 @@ It serves as a simple example of how to build a deck system, shuffle functionali
 ---
 
 ## File Structure
-
-/
-## File Structure
 ```
 ├── public/ # Static assets (images, icons, etc.)
 ├── src/ # Core application code

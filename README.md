@@ -28,14 +28,13 @@ It serves as a simple example of how to build a deck system, shuffle functionali
 - React  
 - Vite  
 - HTML / CSS
-- 
 ---
 
 ## File Structure
 
 /
 ## File Structure
-```bash
+```
 ├── public/ # Static assets (images, icons, etc.)
 ├── src/ # Core application code
 │ ├── components/ # Reusable UI components
